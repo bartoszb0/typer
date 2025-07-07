@@ -1,9 +1,17 @@
-export default function StartScreen() {
+import clsx from 'clsx';
+
+export default function StartScreen(props) {
+
+    const wordElements = props.wordToType.split('').map(letter => {
+        return <span className={clsx(props.gameStarted && 'typed')}>{letter}</span>
+    })
 
     return (
         <div className="startScreen">
             <h3>type</h3>
-            <h1 className="typerWord">typer</h1>
+            <h1 className='typerWord'>
+                {wordElements}
+            </h1>
             <h3>to start</h3>
         </div>
     )

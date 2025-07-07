@@ -28,6 +28,11 @@ h1.typerWord {
   margin-bottom: 70px;
 }
 
+.typed {
+  color: rgb(69, 158, 69);
+}
+
+
 /* Hidden input */
 .hiddenInput {
   position: fixed;

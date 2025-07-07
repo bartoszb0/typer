@@ -1,10 +1,10 @@
-export default function HiddenInput({captureCurrentWord}) {
+export default function HiddenInput({captureCurrentInput}) {
     return (
         <input
             className="hiddenInput"
             autoFocus
             onChange={(e) => 
-                captureCurrentWord(e.currentTarget.value)
+                captureCurrentInput(e.currentTarget.value)
             }
         />
     )

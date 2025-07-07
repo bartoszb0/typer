@@ -1,29 +1,35 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { randomWords } from './words'
 import StartScreen from './components/StartScreen'
 import HiddenInput from './components/HiddenInput'
 
 export default function App() {
 
-  const [typedWord, setTypedWord] = useState('')
+  // Everything that user types that user types
+  const [typedInput, setTypedInput] = useState('')
+  const [wordToType, setWordToType] = useState('typer')
 
-  console.log(typedWord)
+  const trimmedInput = typedInput.slice(-wordToType.length)
+  console.log(trimmedInput)
 
-  // moze tutaj bedzie trzeba uzyc useEffect do sprawdzania czy slowo sie zgadza z danym slowem
+  const gameStarted = wordToType === 'typer' && trimmedInput === wordToType ? true : false
 
-
-  function captureCurrentWord(word) {
-    setTypedWord(word)
+  function captureCurrentInput(word) {
+    setTypedInput(word)
   }
 
   return (
     <main>
-      <StartScreen />
 
 
+      <StartScreen
+        wordToType = {wordToType}
+        gameStarted = {gameStarted}
+      />
 
       <HiddenInput
-        captureCurrentWord={captureCurrentWord}
+        captureCurrentInput={captureCurrentInput}
       />
     </main>
   )
