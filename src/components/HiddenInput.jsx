@@ -3,8 +3,10 @@ export default function HiddenInput({captureCurrentInput}) {
         <input
             className="hiddenInput"
             autoFocus
-            onChange={(e) => 
+            onChange={(e) => {
                 captureCurrentInput(e.currentTarget.value)
+                e.currentTarget.value = ''
+            }
             }
         />
     )

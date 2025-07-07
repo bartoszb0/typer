@@ -7,25 +7,36 @@ import HiddenInput from './components/HiddenInput'
 export default function App() {
 
   // Everything that user types that user types
-  const [typedInput, setTypedInput] = useState('')
+  const [typedInput, setTypedInput] = useState([])
   const [wordToType, setWordToType] = useState('typer')
+  const [completedWords, setCompletedWords] = useState([])
 
-  const trimmedInput = typedInput.slice(-wordToType.length)
-  console.log(trimmedInput)
+  console.log(typedInput)
+  console.log(completedWords.length)
 
-  const gameStarted = wordToType === 'typer' && trimmedInput === wordToType ? true : false
+  if (typedInput.length === wordToType.length) {
+    console.log('CORRECT')
+    correctWord()
+  }
 
-  function captureCurrentInput(word) {
-    setTypedInput(word)
+  function captureCurrentInput(typedLetter) {
+    if (typedLetter === wordToType[typedInput.length]) {
+      setTypedInput(prev => [...prev, typedLetter])
+    } else {
+      console.log(typedInput.length) // need to make this letter of this index red
+    }
+  }
+
+  function correctWord() {
+    setCompletedWords(prev => [...prev, typedInput.join('')])
+    setTypedInput([])
   }
 
   return (
     <main>
-
-
       <StartScreen
         wordToType = {wordToType}
-        gameStarted = {gameStarted}
+        typedInput = {typedInput}
       />
 
       <HiddenInput
