@@ -28,8 +28,50 @@ h1.typerWord {
   margin-bottom: 70px;
 }
 
-.typed {
-  color: rgb(69, 158, 69);
+/* Typing Test */
+.typingTestWords {
+  color: #6666cc;
+  width: 800px;
+  font-size: 50px;
+}
+
+@keyframes typedWord {
+  from {
+    color: #6666cc;
+  }
+  to {
+    color: rgb(76, 145, 76);
+  }
+}
+
+span.typed {
+  animation-name: typedWord;
+  animation-duration: 0.15s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animateMistake {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+span.mistake {
+  display: inline-block;
+  animation: animateMistake;
+  animation-duration: 0.15s;
+  animation-fill-mode: forwards;
+  color: rgb(156, 58, 58);
+}
+
+.currentLetter {
+  color: #444488;
 }
 
 
