@@ -28,11 +28,58 @@ h1.typerWord {
   margin-bottom: 70px;
 }
 
+div.timeButtons {
+  display: flex;
+  margin-top: 100px;
+  gap: 30px;
+}
+
+button.timeButton, .resetButton {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(20, 20, 20);
+  border: 2px solid #444488;
+  border-radius: 15px;
+  color: rgb(129, 129, 129);
+  font-family: Cabin, sans-serif;
+  font-size: 15px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+button.selected {
+  background-color: #6666cc;
+  color: rgb(255, 255, 255);
+}
+
+button.timeButton:hover, .resetButton:hover {
+  background-color: #414179;
+  color: white;
+}
+
 /* Typing Test */
-.typingTestWords {
-  color: #6666cc;
-  width: 800px;
+.typingTestdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mainGameTest {
   font-size: 50px;
+  color: #6666cc;
+
+  margin-top: 30vh;
+
+  width: 80vw;
+  overflow: hidden;
+  height: 190px;
+}
+
+.timer {
+  margin-top: 15vh;
+  color: rgb(63, 63, 63);
+  font-weight: 400;
 }
 
 @keyframes typedWord {
@@ -72,6 +119,11 @@ span.mistake {
 
 .currentLetter {
   color: #444488;
+}
+
+/* Statistics */
+.statistics {
+  color: white;
 }
 
 

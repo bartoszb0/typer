@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState, useRef  } from 'react'
 import { randomTexts } from './test'
 import MainGame from './components/MainGame'
 import HiddenInput from './components/HiddenInput'
@@ -7,31 +7,48 @@ export default function App() {
 
   // TODO :
   // - fix displaying typing text
-  // - add timer after which you can restart game
-  // - add percantage of proper words and mistakes etc
-
+  // style statistics
 
   // Everything that user types that user types
   const [typedInput, setTypedInput] = useState([])
-  const [wordsToType, setWordsToType] = useState('typer') // figure it out
+  const [wordsToType, setWordsToType] = useState('typer')
   const [gameStarted, setGameStarted] = useState(false)
-  const [mistake, setMistake] = useState({
-    letter: null,
-    count: 0
-  })
+  const [mistake, setMistake] = useState({letter: null, count: 0})
+  const [countdown, setCountdown] = useState(30)
+  const [gameOver, setGameOver] = useState(false)
 
-  console.log(mistake)
+  const inputRef = useRef(null);
 
   // Derived values
   const completedWords = typedInput.join('').split(' ').length - 1 // derived value - completed words
   const currentLetter = typedInput.length
 
+  // Run timer when game starts
+  useEffect(() => {
+    if (!gameStarted) return;
 
+    const interval = setInterval(() => {
+      setCountdown(prevCount => {
+        if (prevCount <= 1) {
+          clearInterval(interval)
+          setGameOver(true)
+          return 0
+        }
+        return prevCount - 1
+      })
+    }, 1000);
+
+    return () => clearInterval(interval)
+  }, [gameStarted])
+
+
+  // Start game if input is equal to 'typer'
   if (typedInput.length === wordsToType.length) {
     if (!gameStarted) {
       startGame()
     }
   }
+
 
   function startGame() {
     setGameStarted(true)
@@ -63,6 +80,20 @@ export default function App() {
     }
   }
 
+  function changeTime(time) {
+    setCountdown(time)
+    inputRef.current.focus()
+  }
+
+  function resetGame() {
+    setTypedInput([])
+    setWordsToType('typer')
+    setGameStarted(false)
+    setMistake({letter: null, count: 0})
+    setCountdown(30)
+    setGameOver(false)
+  }
+
   return (
     <main>
       <MainGame
@@ -71,11 +102,22 @@ export default function App() {
         currentLetter = {currentLetter}
         gameStarted = {gameStarted}
         mistake = {mistake}
+        countdown = {countdown}
+        gameOver = {gameOver}
+
+        changeTime = {changeTime}
+
+        completedWords = {completedWords}
+        mistakesCount = {mistake.count}
+        lettersCount = {typedInput.length}
+
+        resetGame = {resetGame}
       />
 
-      <HiddenInput
+      {!gameOver && <HiddenInput
+        inputRef = {inputRef}
         captureCurrentInput={captureCurrentInput}
-      />
+      />}
     </main>
   )
 }

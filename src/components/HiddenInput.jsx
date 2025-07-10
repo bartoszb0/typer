@@ -1,6 +1,7 @@
-export default function HiddenInput({captureCurrentInput}) {
+export default function HiddenInput({inputRef, captureCurrentInput}) {
     return (
         <input
+            ref={inputRef}
             className="hiddenInput"
             autoFocus
             onChange={(e) => {
