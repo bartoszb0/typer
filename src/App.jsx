@@ -7,7 +7,8 @@ export default function App() {
 
   // TODO :
   // - fix displaying typing text
-  // style statistics
+  // - load new text if the old one is done
+
 
   // Everything that user types that user types
   const [typedInput, setTypedInput] = useState([])
@@ -18,6 +19,8 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false)
 
   const inputRef = useRef(null);
+
+  console.log(mistake)
 
   // Derived values
   const completedWords = typedInput.join('').split(' ').length - 1 // derived value - completed words

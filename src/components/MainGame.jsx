@@ -28,6 +28,7 @@ export default function MainGame(props) {
             <TypingTest 
                 wordsElements = {wordsElements}
                 countdown = {props.countdown}
+                currentLetter = {props.currentLetter}
             />
         }
 

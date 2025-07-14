@@ -122,8 +122,62 @@ span.mistake {
 }
 
 /* Statistics */
-.statistics {
+div.statistics {
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mainStat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 80px;
+}
+
+.mainStat > h1 {
+  font-size: 90px;
+  margin-bottom: 0px;
+  color: #6666cc;
+}
+
+.mainStat > h3 {
+  font-size: 30px;
+  color: #444488;
+}
+
+
+.lowerStat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 50px;
+  gap: 150px;
+}
+
+.lowerStat > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.lowerStat > div > h1 {
+  margin-bottom: 0px;
+  font-size: 40px;
+  color: #6666cc;
+}
+
+.lowerStat > div > h3 {
+  color: #444488;
+}
+
+button.resetButton {
+  margin-top: 100px;
 }
 
 

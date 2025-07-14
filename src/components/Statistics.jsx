@@ -12,10 +12,24 @@ export default function Statistics(props) {
 
     return (
         <div className="statistics">
-            <h2>Typing speed: {wpm} words per minute</h2>
-            <h2>Errors made: {props.mistakesCount}</h2>
-            <h2>Total Keystrokes: {props.lettersCount + props.mistakesCount}</h2>
-            <h2>Error Rate: {mistakesPercent}%</h2>
+            <div className="mainStat">
+                <h1>{wpm} WPM</h1><h3>typing speed</h3>
+            </div>
+
+            <div className="lowerStat">
+                <div>
+                    <h1>{props.mistakesCount}</h1><h3>{props.mistakesCount === 1 ? 'error' : 'errors'} made</h3>
+                </div>
+                
+                <div>
+                    <h1>{props.lettersCount + props.mistakesCount}</h1><h3>total keystrokes</h3>
+                </div>
+
+                <div>
+                    <h1>{mistakesPercent}%</h1><h3>error rate</h3>
+                </div>
+            </div>
+            
             <button className="resetButton" onClick={props.resetGame}>Try again</button>
         </div>
     )
