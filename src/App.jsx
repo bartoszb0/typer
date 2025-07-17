@@ -5,22 +5,16 @@ import HiddenInput from './components/HiddenInput'
 
 export default function App() {
 
-  // TODO :
-  // - fix displaying typing text
-  // - load new text if the old one is done
-
-
   // Everything that user types that user types
   const [typedInput, setTypedInput] = useState([])
   const [wordsToType, setWordsToType] = useState('typer')
   const [gameStarted, setGameStarted] = useState(false)
   const [mistake, setMistake] = useState({letter: null, count: 0})
   const [countdown, setCountdown] = useState(30)
+  const [staticTime, setStaticTime] = useState(30)
   const [gameOver, setGameOver] = useState(false)
 
   const inputRef = useRef(null);
-
-  console.log(mistake)
 
   // Derived values
   const completedWords = typedInput.join('').split(' ').length - 1 // derived value - completed words
@@ -85,6 +79,7 @@ export default function App() {
 
   function changeTime(time) {
     setCountdown(time)
+    setStaticTime(time)
     inputRef.current.focus()
   }
 
@@ -113,6 +108,7 @@ export default function App() {
         completedWords = {completedWords}
         mistakesCount = {mistake.count}
         lettersCount = {typedInput.length}
+        staticTime = {staticTime}
 
         resetGame = {resetGame}
       />

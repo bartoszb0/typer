@@ -1,10 +1,6 @@
 export default function Statistics(props) {
 
-    // obliczenia here, moze jakies graphy
-
-    // - jaki % bledow per postawione znaki
-
-    const passedTime = props.countdown === 30 ? 2 : 1
+    const passedTime = props.staticTime == 30 ? 2 : 1
 
     const wpm = props.completedWords * passedTime
 
@@ -18,7 +14,7 @@ export default function Statistics(props) {
 
             <div className="lowerStat">
                 <div>
-                    <h1>{props.mistakesCount}</h1><h3>{props.mistakesCount === 1 ? 'error' : 'errors'} made</h3>
+                    <h1>{props.mistakesCount}</h1><h3>{props.mistakesCount === 1 ? 'mistake' : 'mistakes'} made</h3>
                 </div>
                 
                 <div>
@@ -26,7 +22,7 @@ export default function Statistics(props) {
                 </div>
 
                 <div>
-                    <h1>{mistakesPercent}%</h1><h3>error rate</h3>
+                    <h1>{mistakesPercent}%</h1><h3>mistake rate</h3>
                 </div>
             </div>
             

@@ -76,6 +76,13 @@ button.timeButton:hover, .resetButton:hover {
   height: 190px;
 }
 
+.textContainer {
+  height: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
 .timer {
   margin-top: 15vh;
   color: rgb(63, 63, 63);
