@@ -34,7 +34,8 @@ div.timeButtons {
   gap: 30px;
 }
 
-button.timeButton, .resetButton {
+button.timeButton,
+.resetButton {
   width: 100px;
   height: 30px;
   background-color: rgb(20, 20, 20);
@@ -52,7 +53,8 @@ button.selected {
   color: rgb(255, 255, 255);
 }
 
-button.timeButton:hover, .resetButton:hover {
+button.timeButton:hover,
+.resetButton:hover {
   background-color: #414179;
   color: white;
 }
@@ -105,7 +107,8 @@ span.typed {
 }
 
 @keyframes animateMistake {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   30% {
@@ -156,7 +159,6 @@ div.statistics {
   color: #444488;
 }
 
-
 .lowerStat {
   display: flex;
   justify-content: center;
@@ -187,7 +189,6 @@ button.resetButton {
   margin-top: 100px;
 }
 
-
 /* Hidden input */
 .hiddenInput {
   position: fixed;
@@ -202,4 +203,17 @@ button.resetButton {
   background: transparent;
   caret-color: transparent;
   cursor: default;
+}
+
+/* Mobile information */
+.mobileDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #6666cc;
+  margin: 30px;
+  margin-top: 15vh;
+  font-size: 35px;
 }
